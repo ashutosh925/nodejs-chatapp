@@ -11,6 +11,9 @@ import deleteRouter from "./routes/delete.js";
 // // middlewares
 // import { decode } from './middlewares/jwt.js'
 
+//mongo connection
+import "./config/mongo.js";
+
 
 const app = express();
 const port = process.env.PORT || '6000'
@@ -22,7 +25,7 @@ app.use(express.urlencoded({extended: false}));
 
 
 app.use("/users", indexRouter);
-// app.use("/room", decode, chatRoomRouter);
+app.use("/room",  chatRoomRouter);
 app.use("/delete", deleteRouter);
 
 // Catch 404 errors 
